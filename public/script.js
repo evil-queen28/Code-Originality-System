@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             formData.append("files", files[i]);
         }
 
-        fetch("./check", {
+        fetch("/api/check", { // Changed URL
             method: "POST",
             body: formData,
         })
@@ -58,44 +58,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Display the highlighted code
                 resultElement.innerHTML = `
-            <div class="result-header">
-          <h3>Files ${result.file1 + 1} and ${result.file2 + 1}</h3>
-          <p>Similarity: ${result.similarity}</p>
-          <p>Plagiarism Percentage: ${result.plagiarismPercentage}%</p>
-    </div>
-      <div class="plagiarized-code-container">
-         <div class="plagiarized-code1">
-           <h4>Code 1:</h4>
-            <pre>${highlightedCode1}</pre>
-   </div>
-       <div class="plagiarized-code2">
-            <h4>Code 2:</h4>
-         <pre>${highlightedCode2}</pre>
-      </div>
-</div>
-`;
-
-
-        } else {
+                    <div class="result-header">
+                        <h3>Files ${result.file1 + 1} and ${result.file2 + 1}</h3>
+                        <p>Similarity: ${result.similarity}</p>
+                        <p>Plagiarism Percentage: ${result.plagiarismPercentage}%</p>
+                    </div>
+                    <div class="plagiarized-code-container">
+                        <div class="plagiarized-code1">
+                            <h4>Code 1:</h4>
+                            <pre>${highlightedCode1}</pre>
+                        </div>
+                        <div class="plagiarized-code2">
+                            <h4>Code 2:</h4>
+                            <pre>${highlightedCode2}</pre>
+                        </div>
+                    </div>
+                `;
+            } else {
                 // Display the unplagiarized code as before
                 resultElement.innerHTML = `
-        <div class="result-header">
-         <h3>Files ${result.file1 + 1} and ${result.file2 + 1}</h3>
-         <p>Similarity: ${result.similarity}</p>
-         <p>Plagiarism Percentage: ${result.plagiarismPercentage}%</p>
-        </div>
-        <div class="result-content">
-         <p>Not Plagiarized</p>
-        </div>
-       `;
+                    <div class="result-header">
+                        <h3>Files ${result.file1 + 1} and ${result.file2 + 1}</h3>
+                        <p>Similarity: ${result.similarity}</p>
+                        <p>Plagiarism Percentage: ${result.plagiarismPercentage}%</p>
+                    </div>
+                    <div class="result-content">
+                        <p>Not Plagiarized</p>
+                    </div>
+                `;
             }
 
             resultsContainer.appendChild(resultElement);
         });
 
-
-
-// Additional code to display the plagiarized code horizontally
+        // Additional code to display the plagiarized code horizontally
         const plagiarizedCodeContainers = document.querySelectorAll(".plagiarized-code-container");
         for (const plagiarizedCodeContainer of plagiarizedCodeContainers) {
             plagiarizedCodeContainer.style.display = "flex";
@@ -109,7 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
             plagiarizedCode2.style.width = "40%";
         }
     }
-
 
     function highlightPlagiarizedCode(code, plagiarizedLines) {
         // Split the code into lines
@@ -128,6 +123,4 @@ document.addEventListener("DOMContentLoaded", () => {
         // Join the lines back together
         return codeLines.join("\n");
     }
-
-
 });

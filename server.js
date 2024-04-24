@@ -10,13 +10,12 @@ const port = process.env.PORT || 3000;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-app.use(express.static(__dirname + "/public"));
-
+app.use(express.static("public"));
 
 // Define the plagiarism percentage threshold
 const plagiarismThreshold = 70;
 
-app.post("/check", upload.array("files"), (req, res) => {
+app.post("/api/check", upload.array("files"), (req, res) => {
     const codeFiles = req.files.map((file) => file.buffer.toString());
     const results = [];
 
