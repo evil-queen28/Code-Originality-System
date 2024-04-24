@@ -63,13 +63,11 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>Similarity: ${result.similarity}</p>
           <p>Plagiarism Percentage: ${result.plagiarismPercentage}%</p>
     </div>
-
       <div class="plagiarized-code-container">
          <div class="plagiarized-code1">
            <h4>Code 1:</h4>
             <pre>${highlightedCode1}</pre>
    </div>
-
        <div class="plagiarized-code2">
             <h4>Code 2:</h4>
          <pre>${highlightedCode2}</pre>
@@ -86,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
          <p>Similarity: ${result.similarity}</p>
          <p>Plagiarism Percentage: ${result.plagiarismPercentage}%</p>
         </div>
-
         <div class="result-content">
          <p>Not Plagiarized</p>
         </div>
