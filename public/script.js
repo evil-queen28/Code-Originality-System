@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             formData.append("files", files[i]);
         }
 
-        fetch("/check", {
+        fetch("./check", {
             method: "POST",
             body: formData,
         })

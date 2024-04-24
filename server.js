@@ -10,7 +10,8 @@ const port = process.env.PORT || 3000;
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
+
 
 // Define the plagiarism percentage threshold
 const plagiarismThreshold = 70;
